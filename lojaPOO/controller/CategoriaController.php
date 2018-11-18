@@ -90,14 +90,16 @@ class CategoriaController
 
     }
     
-    public function delete($categoria){
-            $catdao = new CategoriaDAO();
-        if ($catdao->delete($categoria)){
-            // var_dump($categoria);
-            header('Location: index.php');
-        }else{
-            echo "erro ao deletar";
+    public function deletar($id){
+        $this->dados = array();
+        $catdao = new CategoriaDAO();
+
+        try{
+            $categorias = $catdao->delete($id);
+        }catch (PDOException $e){
+            echo "Erro: ".$e->getMessage();
         }
+        $this->principal("Deletado");
 
 
     }

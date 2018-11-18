@@ -53,16 +53,11 @@ switch ($acao){
         $cat->gravaUpdate($categoriaUpdate);
         exit;
 
-    case 'delete':
-        // $id=$_GET'id'];
+    case 'deletar':
+        $id=$_GET['id'];
 
-        $categoriaDelet = new Categoria();
-        $categoriaDelet->setId($_POST['id']);
-        // $categoriaDelet->getNome($_POST['nome']);
-        // $categoriaDelet->getDescricao($_POST['descricao']);
         $cat = new CategoriaController();
-        // var_dump($categoriaDelet);
-        $cat->delete($categoriaDelet);   
+        $cat->deletar($id);   
         exit;
 
 

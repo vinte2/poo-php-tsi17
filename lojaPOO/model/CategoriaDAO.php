@@ -73,16 +73,15 @@ class CategoriaDAO extends DAO
         }
     }
 
-    public function delete($categoria){
-        var_dump($categoria);
-        $sql = "DELETE FROM categoria where id = :id";
-        $stmt = $this->conexao->prepare($sql);
-        $id = $categoria->getId();
-        $stmt->bindParam(':id', $id);
-        if ( $stmt->execute()){
-            return true;
-        }else{
-            return false;
+    public function delete($id){
+        $sql = "delete from categoria where id =:id";
+        try{
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $msg = 'sucesso';
+        }catch (PDOException $e){
+            throw new PDOException($e);
         }
     }
 }

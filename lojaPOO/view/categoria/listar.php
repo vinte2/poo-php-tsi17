@@ -1,7 +1,8 @@
 
 
 <h1>Lista de Categorias</h1>
-<a  href="index.php?acao=incluir" class="fa fa-plus-square-o" style="font-size:24px"></a>
+<a  href="index.php?acao=incluir" class="fa fa-plus-square-o" style="font-size:24px"> 
+Adicionar Categorias</a>
 <!-- <i class="fa fa-plus-square-o" style="font-size:24px"> </i> -->
 <table>
     <thead>
