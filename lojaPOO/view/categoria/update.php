@@ -9,5 +9,4 @@ $categoria = $dados['categorias'][0];
     Descrição <input  type="text" name="descricao" value= "<?= $categoria->getDescricao() ?>">
     <input type="submit" value="Atualizar">
     
-    <!-- <button type="submit" class="fa fa-refresh" style="font-size:24px"></button> -->
 </form>

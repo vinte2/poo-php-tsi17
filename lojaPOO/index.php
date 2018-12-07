@@ -15,13 +15,13 @@ switch ($acao){
         $cat = new CategoriaController();
         $cat->principal();
         exit;
-    case 'detalhes':
+    case 'alterar':
         //pega o ID enviado
         $id = $_GET['id'];
         //instancia o controlador
         $cat = new CategoriaController();
         //chama o método
-        $cat->detalhes($id);
+        $cat->alteracao($id);
         exit;
     case 'incluir':
         $cat = new CategoriaController();
@@ -35,32 +35,28 @@ switch ($acao){
         $cat = new CategoriaController();
         $cat->inserir($categoriaNova);
         exit;
-
-    case 'buscaUpdade';
-        $id=$_GET['id'];
+    case 'gravaAlterar':
+        $categoriaAlterada = new Categoria();
+        $categoriaAlterada->setId($_POST['id']);
+        $categoriaAlterada->setNome($_POST['nome']);
+        $categoriaAlterada->setDescricao($_POST['descricao']);
         $cat = new CategoriaController();
-        $cat->buscaUpdate($id);
+        $cat->alterar($categoriaAlterada);
         exit;
-
-    case 'gravaUpdate':
-//    var_dump($_POST);
-        $categoriaUpdate = new Categoria();
-        $categoriaUpdate->setId($_POST['id']);
-        $categoriaUpdate->setNome($_POST['nome']);
-        $categoriaUpdate->setDescricao($_POST['descricao']);
-        $cat = new CategoriaController();
-//        var_dump($categoriaUpdate);
-        $cat->gravaUpdate($categoriaUpdate);
+    case 'excluir':
+        $cat = new Categoria();
+        $cat->setId($_GET['id']);
+        $catexc = new CategoriaController();
+        $catexc->excluir($cat);
         exit;
-
-    case 'deletar':
-        $id=$_GET['id'];
-
-        $cat = new CategoriaController();
-        $cat->deletar($id);   
+    case 'consultar':
+        $cat = new Categoria();
+        $cat->setId($_POST['id']);
+        $cat->setNome($_POST['nome']);
+        $cat->setDescricao($_POST['descricao']);
+        $catConsul = new CategoriaController();
+        $catConsul->consultar($cat);
         exit;
-
-
     default:
         echo "Ação inválida";
 

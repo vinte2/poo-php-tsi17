@@ -18,6 +18,7 @@ class CategoriaDAO extends DAO
         try{
             $stmt = $this->conexao->prepare($sql);
             $stmt->execute();
+            // $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $categorias = $stmt->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Categoria', ['nome', 'descricao', 'id']);
 
             return $categorias;
